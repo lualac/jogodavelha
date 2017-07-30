@@ -1,27 +1,33 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-	<head>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilo1.css')}}"/>
-	</head>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Jogo da Velha</title>
+  <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/estilo.css")}}"/>
+  <meta charset="UTF-8">
+  <script type="text/javascript" src="/home/luana/projeto/app/static/js/script.js"> </script>
 
-	<meta charset="UTF-8">
-		<title>Jogo da velha</title>
-	</head>
-	<body>
-		<h1> Boa partida! </h1>
-
-		<button type="button" name="" value="" class="css3button"></button>
-		<button type="button" name="" value="" class="css3button"></button>
-		<button type="button" name="" value="" class="css3button"></button>
-		<br>
-		<button type="button" name="" value="" class="css3button"></button>
-		<button type="button" name="" value="" class="css3button"></button>
-		<button type="button" name="" value="" class="css3button"></button>
-		<br>
-		<button type="button" name="" value="" class="css3button"></button>
-		<button type="button" name="" value="" class="css3button"></button>
-		<button type="button" name="" value="" class="css3button"></button>
-
-
-	</body>
+</head>
+<body>
+  <h1> Jogo da velha</h1>
+  <p> Clique para começar. </p>
+<table border="1" cellspacing= "5" align="center">
+<tr>
+<td><img src="img/branco.png" id="n1" onclick="checando(this.id)"></td>
+<td><img src="img/branco.png" id="n2" onclick="checando(this.id)"></td>
+<td><img src="img/branco.png" id="n3" onclick="checando(this.id)"></td>
+</tr>
+<tr>
+<td><img src="img/branco.png" id="n4" onclick="checando(this.id)"></td>
+<td><img src="img/branco.png" id="n5" onclick="checando(this.id)"></td>
+<td><img src="img/branco.png" id="n6" onclick="checando(this.id)"></td>
+</tr>
+<tr>
+<td><img src="img/branco.png" id="n7" onclick="checando(this.id)"></td>
+<td><img src="img/branco.png" id="n8" onclick="checando(this.id)"></td>
+<td><img src="img/branco.png" id="n9" onclick="checando(this.id)"></td>
+</tr>
+</table>
+<input type="button" class="sair" onclick="javascript: location.href='/login';" value="Sair" />
+</body>
 </html>

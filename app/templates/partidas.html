@@ -14,11 +14,16 @@
 <div class="container">
   <h2>Partidas abertas</h2>
   <div class="list-group">
-    <a href="#" class="list-group-item">Partida 01</a>
-    <a href="#" class="list-group-item">Partida 02</a>
-    <a href="#" class="list-group-item">Partida 03</a>
+
+    {% for row in partidas %}
+
+    <a href="/velha/{{ row.idpartida }}" class="list-group-item">Partida {{ row.idpartida }} </a>
+
+    {% endfor %}
   </div>
 </div>
-<center><a href="#" class="css_btn_class">Criar nova partida!</a> <br>
+<center><a href="/velha/new" class="css_btn_class">Criar nova partida!</a> <br>
+  <br>
+    <input type="button" class="sair "onclick="javascript: location.href='/login';" value="Sair" />
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilo.css')}}"/>
+		<link rel="stylesheet" type="text/css" href="{{url_for("static", filename=  "css/estilo.css")}}"/>
 	</head>
 
 	<meta charset="UTF-8">
@@ -13,52 +13,21 @@
 		<p> Quem nunca se divertiu com o jogo da velha? <br>
 			  Jogue o clássico com seus amigos.
 		</p>
-		<form class="form-horizontal">
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" >
-    </div>
-  </div> <br>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Senha</label>
-    <div class="col-sm-10">
-      <input type="senha" class="form-control" id="inputPassword3" >
-    </div>
-  </div> <br>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Lembre-se de mim
-        </label>
-      </div>
-    </div> <br>
-  <p>
-  <a href="#" class="css_btn_class">Entrar</a> <br>
+		<form method="post">
+			 <center><p> Nome </p></center>
+			<center> <input type="text" name="nome">
+		 </input></center>
+
+			<p> Senha </p>
+			 <center><input type="password" name="senha">
+		 </input></center> <br>
+		 <center><button type="submit" class="css_btn_class">Jogar</button> <br>
+	 </form>
 	<br>
-  <a href="#" class="css_btn_class">Não possiu conta? Cadastre-se</a>
+   <a href="/cadastro" class="css_btn_class">Não possiu conta? Cadastre-se</a>
+ </center>
 </p>
 </form>
 	</div>
-	<!-- Formulário
-		<div>
-			<form action="#" method="get">
-				 <center><textarea name="email" rows="2" cols="20"> email
-					</textarea>
-			</form>
-    	</div>
-    	<div>
-			<form action="#" method="get">
-				 <center><textarea name="email" rows="2" cols="20"> senha
-				</textarea>
-			</form>
-    	</div>
- 			</form>
- 			<br><center><button class="button">ENTRAR</button></center> <br>
- 		<div>
- 			<center><button class="button">CADASTRE-SE</button></center>
- 	 	</div>
- 	 	Fim do formulário -->
-	</body>
+</body>
 </html>

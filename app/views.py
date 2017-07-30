@@ -19,48 +19,29 @@ def before_request():
 def teardown_request(exception):
     g.db.close()
 
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#def artists():
-
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    #cur = g.db.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    #cur.execute("SELECT * FROM artista;")
-    #data = cur.fetchall()
-    #cur.close()
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    #return render_template(
-        #'artists/list.html',
-        #title='MovieApp: Artistas',
-        #data=data)
-
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#@app.route('/movies')
-#def movies():
-    #return render_template(
-        #'movies/list.html',
-        #title='MovieApp: Filmes')
-
+@app.route('/')
+def index():
+    return redirect(
+    '/login'
+    )
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
+        nome = request.form['nome']
         senha = request.form['senha']
         cur = g.db.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        cur.execute("SELECT * FROM Jogador where email=%s and senha= %s;" % (email,senha))
-        data = cur.fetchall()
+        cur.execute("SELECT * FROM Jogador where nickname=%s and senha= %s;", (nome,senha))
+        g.db.commit()
+        data=cur.fetchall()
         cur.close()
         if len (data) > 0:
-            session['email'] = email
             session ['id'] = data[0]['id']
             return redirect( url_for('partidas') )
     return render_template(
         'login.html',
-        title='MovieApp: Login')
+        title='Jogo da velha')
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,19 +49,21 @@ def login():
 def cadastro():
     if request.method == 'POST':
         nome = request.form['nome']
-        email = request.form['email']
         senha = request.form['senha']
         cur = g.db.cursor(cursor_factory=psycopg2.extras.DictCursor)
-        cur.execute("INSERT INTO Jogador (nome,email,senha) VALUES ('%s','%s','%s');" (nome,email,senha))
+        cur.execute("INSERT INTO Jogador (nickname,senha) VALUES (%s,%s);",(nome,senha,))
+        cur.close()
+        g.db.commit()
+        cur = g.db.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur.execute("SELECT * FROM Jogador WHERE nickname=%s and senha=%s ;",(nome,senha,))
         data = cur.fetchall()
         cur.close()
         if len (data) > 0:
-            session['email'] = email
             session ['id'] = data[0]['id']
-            return redirect( url_for('partidas') )
+            return redirect('/partidas')
     return render_template(
         'cadastro.html',
-        title='MovieApp: cadastro')
+        title='Jogo da velha: cadastro')
 #~~~~~~~~~~~~~~~
 @app.route('/partidas')
 def partidas():
@@ -90,44 +73,42 @@ def partidas():
     cur.close()
     return render_template(
         'partidas.html',
-        title='MovieApp: Jogar',
+        title='Jogo da velha',
         partidas=data)
 
-#~~~~~~~~~~~~~~~~~~
-#@app.route('/logout')
-#def logout():
-    #session.pop('email', None)
-    #return redirect( url_for('artists') )
 
-# @app.route('/')
-# @app.route('/index')
-# def index():
-#     # return 'Hello world'
-#
-#     # return render_template('index_.html')
-#
-#     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#     cur = g.db.cursor(cursor_factory=psycopg2.extras.DictCursor)
-#     cur.execute("SELECT * FROM foto;")
-#     photos = cur.fetchall()
-#     cur.close()
-#     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#
-#     user = {'nickname': 'Jovens', 'notas': [100, 90, 50], 'photos': photos}
-#     return render_template('base.html',
-#                            title='Home',
-#                            user=user)
-#
-# @app.route('/usuarios')
-# def users():
-#     users = [ 'Gustavo', 'Soares', 'Vieira' ]
-#     return render_template('users.html', users=users)
-#
-# @app.route('/usuarios/<pk>/', methods=['GET',])
-# def user_form(pk):
-#     return render_template('user.html', pk=pk)
-#
-# @app.route('/usuarios/<pk>/', methods=['POST',])
-# def user(pk):
-#     name = request.form['nome']
-#     return render_template('user.html', pk=pk, name=name)
+@app.route('/velha/<pk>', methods = ['GET'])
+def velha(pk):
+    if pk == "new":
+        cur = g.db.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur.execute("INSERT INTO partidas (jogador1) VALUES (%s)", (session['id'],))
+        g.db.commit()
+        cur.close()
+        cur = g.db.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        cur.execute("SELECT idpartida from partidas where jogador1=%s",(session['id'],))
+        data = cur.fetchone()
+        pk = data["idpartida"]
+        cur.execute('SELECT * from  Partidas where idpartida=%s' ,(pk,))
+        data = cur.fetchall()
+        cur.close()
+    return render_template(
+        'jogo.html',
+        title='Jogo da velha: Velha',
+        )
+
+#@app.route ()
+#def jogada ():
+
+
+
+@app.route('/espere')
+def espere():
+    return render_template(
+    'espere.html'
+    )
+
+#~~~~~~~~~~~~~~~~~~
+@app.route('/logout')
+def logout():
+    session.pop('id', None)
+    return redirect( url_for('/login') )
