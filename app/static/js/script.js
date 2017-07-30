@@ -3,10 +3,10 @@ var jogada = 0;
 function checando(id) {
   var src = chequesrc(id);
   if (src == "branco.png") {
-    document.getElementById(id).src = "/home/luana/projeto/app/static/img"+ jogador + ".png";
+    document.getElementById(id).src = "../static/img/"+ jogador + ".png";
     jogada++;
     if (chequeVitoria()) {
-      alert ("Parece que você é bom nisso " + jogador);
+      alert ("parece que você é bom nisso, " + jogador);
       location.reload();
     }
       if(jogada >= 9){

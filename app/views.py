@@ -111,4 +111,4 @@ def espere():
 @app.route('/logout')
 def logout():
     session.pop('id', None)
-    return redirect( url_for('/login') )
+    return redirect( url_for('login') )
