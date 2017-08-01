@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
@@ -6,37 +6,63 @@
   <link rel="stylesheet" type="text/css" href="{{url_for("static", filename="css/estilo.css")}}"/>
   <meta charset="UTF-8">
   <script type="text/javascript" src="{{url_for("static", filename="js/script.js")}}" > </script>
+  <script type="text/javascript" src="{{url_for("static", filename="js/jquerymin.js")}}"></script>
+  <!--AJAX-->
+  <script>
+    function jogar(partida, jogada){
+      console.log(partida);
+      console.log(jogada);
+      $.ajax({
+        url: {{ url_for('jogada')}},
+        data:FormData,
+        processData: false,
+        contentType: false,
+        type: "POST",
+        sucess: function(data){
+          alert(data);
+          }
+      });
+}
+    </script>
 
   <!--CURSOR DO MOUSE-->
   <style type="text/css">body, a:hover {cursor: url(http://ani.cursors-4u.net/symbols/sym-9/sym802.cur), progress !important;}</style>
   <a href="http://www.cursors-4u.com/cursor/2016/07/08/your-life-matters.html" target="_blank" title="Your Life Matters">
   <img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Your Life Matters" style="position:absolute; top: 0px; right: 0px;" /></a>
 <!--fim do cursor do mouse-->
+<!--favicon-->
+<link rel="shortcut icon" href="../static/img/hash.png" />
 
 
 </head>
 <body>
+
+      <form class="checkbox">
+      <b style="color:black;">Jogar contra o computador</b>
+      <input type="checkbox" id="cpu"checked>
+      </form>
+
   <h1> Jogo da velha</h1>
   <p> Clique para começar. </p>
 <table border="1" cellspacing= "5" align="center">
 <tr>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n1" onclick="checando(this.id)"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n2" onclick="checando(this.id)"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n3" onclick="checando(this.id)"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n1" onclick="jogar({{ partida }}, "n1")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n2" onclick="checando(this.id);jogar(idpartida, "n2")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n3" onclick="checando(this.id);jogar(idpartida, "n3")"></td>
 </tr>
 <tr>
-<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n4" onclick="checando(this.id)"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n5" onclick="checando(this.id)"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n6" onclick="checando(this.id)"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n4" onclick="checando(this.id);jogar(idpartida, "n4")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n5" onclick="checando(this.id);jogar(idpartida, "n5")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n6" onclick="checando(this.id);jogar(idpartida, "n6")"></td>
 </tr>
 <tr>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n7" onclick="checando(this.id)"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n8" onclick="checando(this.id)"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n9" onclick="checando(this.id)"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n7" onclick="checando(this.id); jogar(idpartida, "n6")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n8" onclick="checando(this.id); jogar(idpartida, "n7")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n9" onclick="checando(this.id); jogar(idpartida, "n8")"></td>
 </tr>
 </table>
 
-<a href="/logout" class="css_btn_class sair">Sair</a>
+<a href="/logout" class="sair">Sair</a>
 
 
 

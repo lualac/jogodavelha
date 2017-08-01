@@ -1,13 +1,22 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="pt-br">
 	<head>
+		<title>Jogo da velha</title>
 		<link rel="stylesheet" type="text/css" href="{{url_for("static", filename=  "css/estilo.css")}}"/>
+
+		<!--CURSOR DO MOUSE-->
+		<style type="text/css">body, a:hover {cursor: url(http://ani.cursors-4u.net/symbols/sym-9/sym802.cur), progress !important;}</style>
+		<a href="http://www.cursors-4u.com/cursor/2016/07/08/your-life-matters.html" target="_blank" title="Your Life Matters">
+		<img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Your Life Matters" style="position:absolute; top: 0px; right: 0px;" /></a>
+		<!--fim do cursor do mouse-->
+
+		<!--favicon-->
+		<link rel="shortcut icon" href="../static/img/hash.png" />
 	</head>
 
 	<meta charset="UTF-8">
 		<title>Jogo da velha</title>
 	</head>
-	<!-- TENTAR BOTAR O BG NO CSS -->
 	<body>
 		<h1> JOGO DA VELHA </h1>
 		<p> Quem nunca se divertiu com o jogo da velha? <br>
@@ -24,7 +33,7 @@
 		 <center><button type="submit" class="css_btn_class">Jogar</button> <br>
 	 </form>
 	<br>
-   <a href="/cadastro" class="css_btn_class">Não possiu conta? Cadastre-se</a>
+   <a href="/cadastro" class="css_btn_class">Não possui conta? Cadastre-se!</a>
  </center>
 </p>
 </form>

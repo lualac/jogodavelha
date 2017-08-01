@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="pt-br">
 <head>
   <title>Partidas</title>
@@ -6,8 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilo.css')}}"/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!--CURSOR DO MOUSE-->
+  <style type="text/css">body, a:hover {cursor: url(http://ani.cursors-4u.net/symbols/sym-9/sym802.cur), progress !important;}</style>
+  <a href="http://www.cursors-4u.com/cursor/2016/07/08/your-life-matters.html" target="_blank" title="Your Life Matters">
+  <img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Your Life Matters" style="position:absolute; top: 0px; right: 0px;" /></a>
+  <!--fim do cursor do mouse-->
+  <!--favicon-->
+  <link rel="shortcut icon" href="../static/img/hash.png" />
+
 </head>
 <body>
 
@@ -24,6 +31,6 @@
 </div>
 <center><a href="/velha/new" class="css_btn_class">Criar nova partida!</a> <br>
   <br>
-    <a href="/logout" class="button sair">Sair</a>
+    <a href="/logout" class="sair">Sair</a>
 </body>
 </html>

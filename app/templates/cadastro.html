@@ -1,20 +1,41 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="pt-br">
 	<head>
 		<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/estilo.css')}}"/>
-</head>
-
-	<meta charset="UTF-8">
+		<meta charset="UTF-8">
 		<title>Jogo da velha</title>
-	</head>
+		<script type="text/javascript">
+			function validar() {
+				var nome = formuser.nome.value;
+				var senha = formuser.senha.value;
 
+				if (nome == '') {
+					alert ("preencha o campo: nome!");
+					formuser.nome.focus();
+					return false;
+				}
+				if (senha == '') {
+					alert ("preencha o campo: senha!");
+					formuser.senha.focus();
+					return false;
+			}
+}
+			</script>
+			<!--CURSOR DO MOUSE-->
+			<style type="text/css">body, a:hover {cursor: url(http://ani.cursors-4u.net/symbols/sym-9/sym802.cur), progress !important;}</style>
+			<a href="http://www.cursors-4u.com/cursor/2016/07/08/your-life-matters.html" target="_blank" title="Your Life Matters">
+			<img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Your Life Matters" style="position:absolute; top: 0px; right: 0px;" /></a>
+			<!--fim do cursor do mouse-->
+			<!--favicon-->
+			<link rel="shortcut icon" href="../static/img/hash.png" />
+	</head>
 	<body>
 		<h1> JOGO DA VELHA </h1>
 		<p> Cadastre-se para jogar com seus amigos. <br>
 		</p>
 
 
-      <form method="post">
+      <form name="formuser" method="post">
 				 <center><p> Nome </p></center>
         <center> <input type="text" name="nome">
 			 </input></center>
@@ -22,9 +43,8 @@
 				<p> Senha </p>
 				 <center><input type="password" name="senha">
 			 </input></center> <br>
-				 <center><button type="submit" class="css_btn_class">Jogar</button></center>
+				 <center><input type="submit" onclick="return validar()" value="Jogar" class="css_btn_class"></input></center>
 			</form>
-
 
 	</body>
 </html>

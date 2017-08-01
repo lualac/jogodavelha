@@ -1,0 +1,33 @@
+﻿CREATE TABLE Jogador(
+id SERIAL,
+nome VARCHAR (50),
+senha VARCHAR (50),
+pontuacao INT,
+PRIMARY KEY (id));
+
+CREATE TABLE Partidas(
+idpartida INT NOT NULL,
+jogador1 INT NOT NULL,
+jogador2 INT NOT NULL,
+resultado INT NULL,
+p0 INT NOT NULL,
+p1 INT NOT NULL,
+p2 INT NOT NULL,
+p3 INT NOT NULL,
+p4 INT NOT NULL,
+p5 INT NOT NULL,
+p6 INT NOT NULL,
+p7 INT NOT NULL,
+p8 INT NOT NULL,
+FOREIGN KEY (jogador1) REFERENCES Jogador(id),
+FOREIGN KEY (jogador2) REFERENCES Jogador(id),
+FOREIGN KEY (resultado) REFERENCES Jogador(id),
+FOREIGN KEY (p0) REFERENCES Jogador(id),
+FOREIGN KEY (p1) REFERENCES Jogador(id),
+FOREIGN KEY (p2) REFERENCES Jogador(id),
+FOREIGN KEY (p3) REFERENCES Jogador(id),
+FOREIGN KEY (P4) REFERENCES Jogador(id),
+FOREIGN KEY (p5) REFERENCES Jogador(id),
+FOREIGN KEY (p6) REFERENCES Jogador(id),
+FOREIGN KEY (p7) REFERENCES Jogador(id),
+FOREIGN KEY (P8) REFERENCES Jogador(id));

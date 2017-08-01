@@ -2,11 +2,12 @@ var jogador = 'x';
 var jogada = 0;
 function checando(id) {
   var src = chequesrc(id);
+  var cpu = document.getElementById('cpu').checked;
   if (src == "branco.png") {
-    document.getElementById(id).src = "../static/img/"+ jogador + ".png";
+    document.getElementById(id).src = "../static/img/" + jogador + ".png";
     jogada++;
     if (chequeVitoria()) {
-      alert ("parece que você é bom nisso, " + jogador);
+      alert ("parece que você é bom nisso, vitória pro " + jogador);
       location.reload();
     }
       if(jogada >= 9){
@@ -19,10 +20,33 @@ function checando(id) {
     else {
       jogador = 'x';
     }
-
   }
-
+  if (cpu && jogador == 'o') {
+    checando(jogadaDoComputador());
+  }
 }
+function jogadaDoComputador(){
+  if (chequesrc('n5') == 'branco.png') {
+    return 'n5'
+  }
+  if (chequesrc('n3') == 'branco.png') {
+    return 'n3'
+  }
+  if (chequesrc('n9') == 'branco.png') {
+    return 'n9'
+  }
+  if (chequesrc('n1') == 'branco.png') {
+    return 'n1'
+  }
+  if (chequesrc('n7') == 'branco.png') {
+    return 'n7'
+  }
+  if (chequesrc('n8') == 'branco.png') {
+    return 'n8'
+  }
+  return 'n' + Math.floor((Math.random() * 9) + 1);
+}
+
 function chequesrc(id) {
   var src = document.getElementById(id).src;
   return src.substring(src.length -10, src.length);
