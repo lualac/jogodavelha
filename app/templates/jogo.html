@@ -13,7 +13,7 @@
       console.log(partida);
       console.log(jogada);
       $.ajax({
-        url: {{ url_for('jogada')}},
+        url: "{{ url_for('jogada')}}",
         data:FormData,
         processData: false,
         contentType: false,
@@ -46,19 +46,19 @@
   <p> Clique para começar. </p>
 <table border="1" cellspacing= "5" align="center">
 <tr>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n1" onclick="jogar({{ partida }}, "n1")"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n2" onclick="checando(this.id);jogar(idpartida, "n2")"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n3" onclick="checando(this.id);jogar(idpartida, "n3")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n1" onclick="checando(this.id);jogar({{ partida }}, 'n1');"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n2" onclick="checando(this.id);jogar({{ partida }}, 'n2');"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n3" onclick="checando(this.id);jogar({{ partida }}, 'n3');"></td>
 </tr>
 <tr>
-<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n4" onclick="checando(this.id);jogar(idpartida, "n4")"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n5" onclick="checando(this.id);jogar(idpartida, "n5")"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n6" onclick="checando(this.id);jogar(idpartida, "n6")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n4" onclick="checando(this.id);jogar({{ partida }}, 'n4')"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n5" onclick="checando(this.id);jogar({{ partida }}, 'n5')"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}"  id="n6" onclick="checando(this.id);jogar({{ partida }}, 'n6')"></td>
 </tr>
 <tr>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n7" onclick="checando(this.id); jogar(idpartida, "n6")"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n8" onclick="checando(this.id); jogar(idpartida, "n7")"></td>
-<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n9" onclick="checando(this.id); jogar(idpartida, "n8")"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n7" onclick="checando(this.id); jogar({{ partida }}, 'n7')"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n8" onclick="checando(this.id); jogar({{ partida }}, 'n8')"></td>
+<td><img src="{{url_for("static", filename="img/branco.png")}}" id="n9" onclick="checando(this.id); jogar({{ partida }}, 'n9')"></td>
 </tr>
 </table>
 
